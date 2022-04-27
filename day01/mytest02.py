@@ -28,3 +28,7 @@ else:
     print("com", com)
     print("비겼습니다.")
 
+#result =""
+#if com == "가위" and user == "가위": result = "비김"
+#if com == "가위" and user == "바위": result = "이김"
+#if com == "가위" and user == "보": result = "짐"
