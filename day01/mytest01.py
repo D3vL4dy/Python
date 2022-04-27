@@ -9,4 +9,5 @@ end = input("끝수를 넣으세요")
 for i in range(int(start), int(end)+1):
     sum += i
 
-print("sum", sum)
+#print("sum", sum)
+print("당신의 수의 합은 {}입니다.".format(sum))
