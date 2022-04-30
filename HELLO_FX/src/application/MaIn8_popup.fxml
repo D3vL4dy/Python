@@ -11,9 +11,12 @@
 
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="81.0" layoutY="43.0" prefHeight="14.0" prefWidth="40.0" text="calling" />
+            <Label layoutX="21.0" layoutY="41.0" prefHeight="14.0" prefWidth="40.0" text="calling" />
             <TextField id="tf" layoutX="21.0" layoutY="96.0" />
-            <Button id="btn_close" layoutX="130.0" layoutY="173.0" mnemonicParsing="false" text="종료" />
-         </children></AnchorPane>
+            <Button id="btn_close" layoutX="142.0" layoutY="171.0" mnemonicParsing="false" text="종료" />
+         </children>
+    </AnchorPane>
+    
+
   </children>
 </VBox>
