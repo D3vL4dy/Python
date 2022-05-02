@@ -21,8 +21,7 @@ class MainClass(QMainWindow, form_class) :
         a = self.le_mine.text()
         print(a)
         
-        rnd = random.random() * 3
-        print(rnd)
+        rnd = random() * 3
         if rnd == 0:
             self.le_com.setText("가위")
         elif rnd == 1:
@@ -30,16 +29,14 @@ class MainClass(QMainWindow, form_class) :
         else:
             self.le_com.setText("보")
             
-        print(self.le_com.text())
-        # b = self.le_com.text() 
-        # print(b)   
-        #
-        # if (a == "가위" and b == "보") or (a == "바위" and b == "가위") or (a == "보" and b == "바위"):
-        #     self.le_result.setText("이겼습니다.")
-        # elif (a == "가위" and b == "바위") or (a == "바위" and b == "보") or (a == "보" and b == "가위"):
-        #     self.le_result.setText("졌습니다.")  
-        # else:
-        #     self.le_result.setText("비겼습니다.")   
+        b = self.le_com.text() 
+        
+        if (a == "가위" and b == "보") or (a == "바위" and b == "가위") or (a == "보" and b == "바위"):
+            self.le_result.setText("이겼습니다.")
+        elif (a == "가위" and b == "바위") or (a == "바위" and b == "보") or (a == "보" and b == "가위"):
+            self.le_result.setText("졌습니다.")  
+        else:
+            self.le_result.setText("비겼습니다.")   
         
         
 
