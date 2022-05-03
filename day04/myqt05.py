@@ -20,9 +20,19 @@ class MainClass(QMainWindow, form_class) :
         a = self.le.text()
         num = int(a)
         result = ""
+        # result += "{}*{}={}\n".format(num, 1, 1*num)
+        # result += "{}*{}={}\n".format(num, 2, 2*num)
+        # result += "{}*{}={}\n".format(num, 3, 3*num)
+        # result += "{}*{}={}\n".format(num, 4, 4*num)
+        # result += "{}*{}={}\n".format(num, 5, 5*num)
+        # result += "{}*{}={}\n".format(num, 6, 6*num)
+        # result += "{}*{}={}\n".format(num, 7, 7*num)
+        # result += "{}*{}={}\n".format(num, 8, 8*num)
+        # result += "{}*{}={}\n".format(num, 9, 9*num)
         
         for i in range(1, 9+1):
-            result += num + "*" + i + "=" + num*i
+            result += str(num) + "*" + str(i) + "=" + str(num*i)
+            # result += "{} * {} = {}".format(num,i, num*i)+"\n"
             print(result)
         
         self.te.setText(result)
