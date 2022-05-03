@@ -1,5 +1,5 @@
 #ui를 파이썬에 불러오기
-#버튼을 눌렀을 때 가위바위보
+#버튼을 눌렀을 때 홀짝
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -18,28 +18,25 @@ class MainClass(QMainWindow, form_class) :
         self.show();
         
     def myclick(self):
-        a = self.le_mine.text()
-        print(a)
+        mine = self.le_mine.text()
+        com = ""
+        result = ""
         
-        rnd = random() * 3
-        if rnd == 0:
-            self.le_com.setText("가위")
-        elif rnd == 1:
-            self.le_com.setText("바위")
+        print(mine, com, result)
+        rnd = random()
+        if rnd>0.5:
+            com = "홀"
         else:
-            self.le_com.setText("보")
+            com = "짝"
+        if com == mine:
+            result = "이김"
+        else:
+            result = "짐"
             
-        b = self.le_com.text() 
-        
-        if (a == "가위" and b == "보") or (a == "바위" and b == "가위") or (a == "보" and b == "바위"):
-            self.le_result.setText("이겼습니다.")
-        elif (a == "가위" and b == "바위") or (a == "바위" and b == "보") or (a == "보" and b == "가위"):
-            self.le_result.setText("졌습니다.")  
-        else:
-            self.le_result.setText("비겼습니다.")   
+        self.le_com.setText(com)
+        self.le_result.setText(result)
         
         
-
 if __name__ == "__main__" :
     app = QApplication(sys.argv) 
     window = MainClass() 
