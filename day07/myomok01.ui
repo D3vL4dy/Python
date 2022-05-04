@@ -6,38 +6,31 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>645</width>
+    <height>395</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="lbl">
-    <property name="geometry">
-     <rect>
-      <x>115</x>
-      <y>80</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Good Morning</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pb">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>80</y>
-      <width>75</width>
-      <height>23</height>
+      <x>500</x>
+      <y>100</y>
+      <width>40</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>click</string>
+     <string>reset</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
     </property>
    </widget>
   </widget>
@@ -46,7 +39,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>645</width>
      <height>21</height>
     </rect>
    </property>
