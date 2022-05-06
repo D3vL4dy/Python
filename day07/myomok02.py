@@ -45,20 +45,12 @@ class MainClass(QMainWindow, form_class):
         self.show()
     
     def myreset(self):
+        self.flag_wb = True
         self.flag_over = False
-        self.arr2d = [
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0]
-        ]
+        
+        for i in range(10):
+            for j in range(10):
+                self.arr2d[i][j] = 0
         self.myrender()
         
     def myrender(self):
@@ -247,9 +239,6 @@ class MainClass(QMainWindow, form_class):
                     return cnt
         except:
             return cnt
-        
-    def myreset(self):
-        print("myreset")
                       
 if __name__ == "__main__" :
     app = QApplication(sys.argv) 
