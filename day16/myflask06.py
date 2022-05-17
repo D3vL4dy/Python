@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 import random
+import flask
 
 app = Flask(__name__)
 app.secret_key = "mysecret"
@@ -22,7 +23,8 @@ socket_io = SocketIO(app)
 
 @app.route('/')
 def strike():
-    return render_template('strike.html')
+    ip = flask.request.remote_addr
+    return render_template('strike.html', ip=ip)
 
 @socket_io.on("message")
 def request(message):
@@ -64,3 +66,4 @@ def request(message):
 
 if __name__ == '__main__':
     socket_io.run(app, host="0.0.0.0", port=9999) # host="0.0.0.0" -> 모든 IP에서 열어주는 역할
+    
