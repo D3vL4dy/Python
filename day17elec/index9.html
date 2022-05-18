@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello World!</title>
+</head>
+<style>
+.it {
+	width: 40px;
+}
+
+#ib {
+	width: 80px;
+}
+</style>
+<script>
+	function mydown(e){
+		if(e.key == "Enter"){
+			myclick();
+		}
+	}
+	
+	function myclick() {
+		var itMine = document.querySelector("#itMine");
+		var itCom = document.querySelector("#itCom");
+		var itResult = document.querySelector("#itResult");
+
+		var com = "";
+		var mine = itMine.value;
+		var result = "";
+
+		var rnd = Math.random();
+		if (rnd > 0.66) {
+			com = "가위";
+		} else if (rnd > 0.33) {
+			com = "바위";
+		} else {
+			com = "보";
+		}
+
+		if (mine == "가위" && com == "보") result = "이김";
+		if (mine == "바위" && com == "가위") result = "이김";
+		if (mine == "보" && com == "바위") result = "이김";
+
+		if (mine == "가위" && com == "바위") result = "짐";
+		if (mine == "바위" && com == "보") result = "짐";
+		if (mine == "보" && com == "가위") result = "짐";
+
+		if (mine == com) result = "비김";
+
+		itCom.value = com;
+		itResult.value = result;
+
+	}
+</script>
+<body>
+	<table>
+		<tr>
+			<td>나:</td>
+			<td><input type="text" class="it" id="itMine" onkeydown="mydown(event)"/></td>
+		</tr>
+		<tr>
+			<td>컴:</td>
+			<td><input type="text" class="it" id="itCom" /></td>
+		</tr>
+		<tr>
+			<td>결과:</td>
+			<td><input type="text" class="it" id="itResult" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" id="ib" value="click" onclick="myclick()" />
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
