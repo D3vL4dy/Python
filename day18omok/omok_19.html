@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+table,td{
+	border-collapse: collapse;
+	margin: 0px;
+	padding: 0px;
+}
+img{
+	display: block;
+}
+
+</style>
+<script type="text/javascript">
+var flag_wb = true;
+var flag_over = false;
+var arr2d = [
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0, 0,0,0,0,0, 0,0,0,0]
+];
+
+function myreset(){
+	flag_wb = true;
+	flag_over = false
+	
+	for(var i=0; i<19; i++){
+		for(var j=0; j<19; j++){
+			arr2d[i][j] = 0;
+		}
+	}
+	myrender();
+}
+
+function myclick(obj){
+	if(flag_over) return;
+    var str_ij = obj.title
+    arr_ij = str_ij.split(",")
+    i = parseInt(arr_ij[0])
+    j = parseInt(arr_ij[1])
+    
+    if(arr2d[i][j]>0){
+    	return;
+    }
+	
+    var stone = -1;
+	if(flag_wb){
+		arr2d[i][j] = 1;
+		stone = 1;
+	}else{
+		arr2d[i][j] = 2;
+		stone = 2;
+	}
+    
+	var up = checkUP(i,j,stone);
+	var dw = checkDW(i,j,stone);
+	var ri = checkRI(i,j,stone);
+	var le = checkLE(i,j,stone);
+	var ur = checkUR(i,j,stone);
+	var ul = checkUL(i,j,stone);
+	var dr = checkDR(i,j,stone);
+	var dl = checkDL(i,j,stone);
+	
+	console.log("up",up);
+	console.log("dw",dw);
+	console.log("ri",ri);
+	console.log("le",le);
+	console.log("ur",ur);
+	console.log("ul",ul);
+	console.log("dr",dr);
+	console.log("dl",dl);
+    
+	var d1 = up + dw + 1;
+	var d2 = ur + dl + 1;
+	var d3 = ri + le + 1;
+	var d4 = ul + dr + 1;
+	
+    myrender();
+    
+    if( d1==5 || d2==5 || d3==5 || d4==5 ){
+    	flag_over = true;
+		if(flag_wb){
+			setTimeout("alert('백돌승리')", 1);
+		} else{
+			setTimeout("alert('흑돌승리')", 1);
+		}
+    }
+    
+    flag_wb =! flag_wb;
+    
+}
+
+function checkDL(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			i++;
+			j--;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function checkDR(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			i++;
+			j++;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function checkUL(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			i--;
+			j--;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function checkUR(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			i--;
+			j++;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function checkLE(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			j--;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function checkRI(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			j++;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function checkDW(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			i++;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function checkUP(i,j,stone){
+	var cnt = 0;
+	try{
+		while(true){
+			i--;
+			if(arr2d[i][j]==stone){
+				cnt++;
+			} else {
+				return cnt;
+			}
+		}
+	}catch(error){
+		return cnt;
+	}
+}
+
+function myinit(){
+	var my_tbody = document.querySelector("#my_tbody");
+	
+	var rows = "";
+
+
+	for(var i=0;i<19;i++){
+		var tds = "";
+		for(var j=0;j<19;j++){
+			tds += "<td><img title='"+i+","+j+"' onclick='myclick(this)' src='0.png'></td>";
+		}
+		var row = `
+			<tr>
+				${tds}
+			</tr>
+			`;
+		rows += row;
+	}
+	
+	console.log(rows);
+	my_tbody.innerHTML = rows;
+	
+	myrender();
+	
+}
+
+function myrender(){
+	var imgs = document.querySelectorAll("#my_tbody img");
+	console.log(imgs);
+	for(var i=0;i<19;i++){
+		for(var j=0;j<19;j++){
+			if(arr2d[i][j]==0){
+				imgs[i*19+j].src = "0.png";
+			}
+			if(arr2d[i][j]==1){
+				imgs[i*19+j].src = "1.png";
+			}
+			if(arr2d[i][j]==2){
+				imgs[i*19+j].src = "2.png";
+			}
+		}
+	}
+}
+
+</script>
+</head>
+<body onload="myinit()">
+<table>
+	<tbody id="my_tbody">
+	</tbody>
+</table>
+<input type="button" id="reset" value="reset" onclick="myreset()">
+
+</body>
+</html>
